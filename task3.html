@@ -1,0 +1,136 @@
+<!-- Name: LAKSHMI NAIR Roll No:A866175124011  Task 3:Music Player & PLaylist Cards-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 3 - Music Player & Playlist Shelf</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #0b1020;
+  color: #e2e8f0;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.component-container { width: 100%; max-width: 900px; }
+
+/* Mobile: single column */
+.player {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  background: #111827;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+/* Album section */
+.album { text-align: center; }
+
+.vinyl {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: conic-gradient(#1f2937, #0b0f19, #374151, #0b0f19, #1f2937);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  animation: spin 6s linear infinite;
+}
+.vinyl::after {            /* centre label */
+  content: "";
+  position: absolute;
+  inset: 35%;
+  border-radius: 50%;
+  background: #e11d48;
+  border: 4px solid #111827;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.album h1 { font-size: 1.3rem; }
+.album p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem; }
+
+/* Playback controls: Flexbox with uniform gap */
+.controls { display: flex; justify-content: center; gap: 1rem; }
+.controls button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #1f2937;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.controls .play { background: #e11d48; }
+
+/* Queue */
+.queue h2 {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+.queue ul { list-style: none; }
+
+.track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #1f2937;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+.track:hover { transform: translateX(6px); }
+.track .time { color: #94a3b8; font-size: 0.9rem; }
+.tag {
+  background: #e11d48;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* Desktop breakpoint */
+@media (min-width: 768px) {
+  .player { grid-template-columns: 200px 1fr; }
+}
+</style>
+</head>
+<body>
+<main class="component-container">
+  <section class="player">
+    <div class="album">
+      <div class="vinyl" role="img" aria-label="Spinning vinyl record"></div>
+      <h1>Midnight Echoes</h1>
+      <p>Cyber Wave • 2026</p>
+      <div class="controls">
+        <button type="button" aria-label="Previous">⏮</button>
+        <button type="button" class="play" aria-label="Play">▶</button>
+        <button type="button" aria-label="Next">⏭</button>
+      </div>
+    </div>
+
+    <div class="queue">
+      <h2>Up Next</h2>
+      <ul>
+        <li class="track"><span>01. Neon Route</span><span class="tag">PLAY</span></li>
+        <li class="track"><span>02. Silicon Drift</span><span class="time">4:15</span></li>
+        <li class="track"><span>03. Digital Rain</span><span class="time">2:58</span></li>
+        <li class="track"><span>04. Night Ride</span><span class="time">3:10</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+</body>
+</html>

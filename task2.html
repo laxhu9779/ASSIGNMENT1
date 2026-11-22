@@ -1,0 +1,176 @@
+<!-- Name: LAKSHMI NAIR Roll No:A866175124011  Task 2:Responsive Pricing Cards  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 2 - Responsive Pricing Cards</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.component-container { width: 100%; max-width: 900px; }
+
+/* Billing toggle pill (Flexbox) */
+.toggle-wrap { text-align: center; margin-bottom: 2rem; }
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 0.25rem;
+}
+.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.toggle label {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #475569;
+  cursor: pointer;
+}
+.toggle input:checked + label { background: #4f46e5; color: #fff; }
+
+/* Mobile: 1 column */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Card: Flexbox column so the button sits flush at the bottom */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.15);
+}
+
+.card h2 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.price { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+.price span { font-size: 0.9rem; font-weight: 400; color: #64748b; }
+.card ul { list-style: none; color: #475569; line-height: 1.9; }
+
+.btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Featured Pro card */
+.card.featured { border-color: #4f46e5; }
+.card.featured .btn { background: #4f46e5; }
+.badge {
+  position: absolute;
+  top: -0.75rem;
+  right: 1rem;
+  background: #f59e0b;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* Glow pulse: the glow lives on a pseudo-element and only its opacity animates */
+.card.featured::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 24px 4px rgba(79, 70, 229, 0.6);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: glow 2s ease-in-out infinite;
+}
+@keyframes glow {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 1; }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 850px) {
+  .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<main class="component-container">
+  <div class="toggle-wrap">
+    <div class="toggle">
+      <input type="radio" name="billing" id="monthly" checked>
+      <label for="monthly">Monthly</label>
+      <input type="radio" name="billing" id="annual">
+      <label for="annual">Annual</label>
+    </div>
+  </div>
+
+  <section class="pricing-grid">
+    <article class="card">
+      <div>
+        <h2>Starter</h2>
+        <p class="price">Free</p>
+        <ul>
+          <li>1 project</li>
+          <li>Community support</li>
+        </ul>
+      </div>
+      <button class="btn" type="button">Select</button>
+    </article>
+
+    <article class="card featured">
+      <span class="badge">POPULAR</span>
+      <div>
+        <h2>Pro Plan</h2>
+        <p class="price">₹799<span>/mo</span></p>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Priority email support</li>
+          <li>Advanced analytics</li>
+          <li>Custom domains</li>
+        </ul>
+      </div>
+      <button class="btn" type="button">Select</button>
+    </article>
+
+    <article class="card">
+      <div>
+        <h2>Team</h2>
+        <p class="price">₹1,999<span>/mo</span></p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>10 team seats</li>
+          <li>Shared workspaces</li>
+        </ul>
+      </div>
+      <button class="btn" type="button">Select</button>
+    </article>
+  </section>
+</main>
+</body>
+</html>
